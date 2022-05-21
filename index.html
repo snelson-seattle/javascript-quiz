@@ -13,7 +13,34 @@
 </head>
 
 <body>
-
+    <div class="quiz-container" id="quiz">
+        <div class="quiz-header">
+            <p id="question-number">Question #</p>
+            <p id="timer">:00</p>
+        </div>
+        <div class="quiz-content">
+            <h2 id="question">Question Text</h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="a">
+                    <label for="a" id="a_text">Answer...</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="b">
+                    <label for="b" id="b_text">Answer...</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="c">
+                    <label for="c" id="c_text">Answer...</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" class="answer" id="d">
+                    <label for="d" id="d_text">Answer...</label>
+                </li>
+            </ul>
+        </div>
+        <button id="submit">Submit</button>
+    </div>
 </body>
 
 </html>
