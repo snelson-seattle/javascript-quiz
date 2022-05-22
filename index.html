@@ -1,46 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript Quiz</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="./style.css">
-    <!-- JavaScript -->
+    <!-- MDL CSS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- MDL JavaScript -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- Custom JavaScript -->
     <script defer src="./app.js"></script>
-</head>
+  </head>
 
-<body>
-    <div class="quiz-container" id="quiz">
-        <div class="quiz-header">
-            <p id="question-number">Question #</p>
-            <p id="timer">:00</p>
-        </div>
-        <div class="quiz-content">
-            <h2 id="question">Question Text</h2>
-            <ul>
-                <li>
-                    <input type="radio" name="answer" class="answer" id="a">
-                    <label for="a" id="a_text">Answer...</label>
-                </li>
-                <li>
-                    <input type="radio" name="answer" class="answer" id="b">
-                    <label for="b" id="b_text">Answer...</label>
-                </li>
-                <li>
-                    <input type="radio" name="answer" class="answer" id="c">
-                    <label for="c" id="c_text">Answer...</label>
-                </li>
-                <li>
-                    <input type="radio" name="answer" class="answer" id="d">
-                    <label for="d" id="d_text">Answer...</label>
-                </li>
-            </ul>
-        </div>
-        <button id="submit">Submit</button>
-    </div>
-</body>
-
+  <body>
+    <main class="game-screen">
+      <div id="home-screen">
+        <!-- welcome screen goes here -->
+      </div>
+      <div id="quiz-screen">
+        <!-- quiz goes here -->
+      </div>
+      <div id="input-screen">
+        <!-- user intials input goes here -->
+      </div>
+      <div id="score-screen">
+        <!-- scoreboard goes here -->
+      </div>
+    </main>
+  </body>
 </html>
