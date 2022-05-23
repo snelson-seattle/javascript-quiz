@@ -60,11 +60,11 @@ THEN I can save my initials and my score
 ### Built with
 
 - HTML5
-- CSS
+- CSS3
 - JavaScript
 - Mobile-first workflow
 - [jQuery](https://jquery.com/) - JS library
-- [Material Design Lite](https://getmdl.io/) - For styles
+- [Bootstrap](https://getbootstrap.com/) - For styles
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
 
