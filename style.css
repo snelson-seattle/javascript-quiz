@@ -1,13 +1,19 @@
-.demo-card-wide.mdl-card {
-  width: 512px;
+#scoreboard-btn {
+  cursor: pointer;
 }
 
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 80px;
-  background-color: black;
+#answer-list,
+#scores-list {
+  list-style-type: none;
 }
 
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
+#scores-list {
+  border: 1px solid black;
+  padding: 1em 2em;  
+}
+
+
+
+.hide {
+  display: none;
 }
