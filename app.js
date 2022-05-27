@@ -53,6 +53,10 @@ $(document).ready(() => {
 
   startBtn.click(startQuiz);
 
+  answerListEl.on("click", ".btn", (e) => {
+    console.log(e.target);
+  });
+
   submitInitialsBtn.click(() => {
     saveScore();
     hideScoreInputScreen();
@@ -60,6 +64,7 @@ $(document).ready(() => {
   });
 
   returnBtn.click(returnHome);
+
   clearScoresBtn.click(clearScores);
 
   // Game Functions
