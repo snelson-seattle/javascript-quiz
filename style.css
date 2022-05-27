@@ -13,6 +13,10 @@
   text-transform: uppercase;
 }
 
+#question {
+  font-size: 2rem;
+}
+
 
 
 .hide {

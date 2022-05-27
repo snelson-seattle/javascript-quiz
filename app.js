@@ -1,15 +1,93 @@
 let questions = [
   {
-    q: "Question 1",
-    a: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    q: "Given the array animals = ['cow', 'pig', 'chicken', 'duck'], how would you print 'chicken' to the console?",
+    a: [
+      { option: "A: console.log(animals.chicken)", isCorrect: false },
+      { option: "B: console.log(animals['chicken'])", isCorrect: false },
+      { option: "C: console.log(animals[3]", isCorrect: false },
+      { option: "D: console.log(animals[2])", isCorrect: true },
+    ],
   },
   {
-    q: "Question 2",
-    a: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    q: "Given the object person = {name: Tom, age: 32}, how would you print the age of 32 to the console?",
+    a: [
+      { option: "A: console.log(person.age)", isCorrect: false },
+      { option: "B: console.log(person['age'])", isCorrect: false },
+      { option: "C: Both A and B", isCorrect: true },
+      { option: "D: None of the above", isCorrect: false },
+    ],
   },
   {
-    q: "Question 3",
-    a: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    q: "How do you declare a variable in JavaScript?",
+    a: [
+      { option: "A: With the var keyword", isCorrect: false },
+      { option: "B: With the let keyword", isCorrect: false },
+      { option: "C: Both A and B", isCorrect: true },
+      { option: "D: None of the above", isCorrect: false },
+    ],
+  },
+  {
+    q: "Question 4",
+    a: [
+      { option: "A:", isCorrect: true },
+      { option: "B:", isCorrect: false },
+      { option: "C:", isCorrect: false },
+      { option: "D:", isCorrect: false },
+    ],
+  },
+  {
+    q: "Question 5",
+    a: [
+      { option: "A:", isCorrect: false },
+      { option: "B:", isCorrect: false },
+      { option: "C:", isCorrect: false },
+      { option: "D:", isCorrect: true },
+    ],
+  },
+  {
+    q: "Question 6",
+    a: [
+      { option: "A:", isCorrect: false },
+      { option: "B:", isCorrect: true },
+      { option: "C:", isCorrect: false },
+      { option: "D:", isCorrect: false },
+    ],
+  },
+  {
+    q: "Question 7",
+    a: [
+      { option: "A:", isCorrect: false },
+      { option: "B:", isCorrect: false },
+      { option: "C:", isCorrect: true },
+      { option: "D:", isCorrect: false },
+    ],
+  },
+  {
+    q: "Question 8",
+    a: [
+      { option: "A:", isCorrect: true },
+      { option: "B:", isCorrect: false },
+      { option: "C:", isCorrect: false },
+      { option: "D:", isCorrect: false },
+    ],
+  },
+  {
+    q: "Question 9",
+    a: [
+      { option: "A:", isCorrect: true },
+      { option: "B:", isCorrect: false },
+      { option: "C:", isCorrect: false },
+      { option: "D:", isCorrect: false },
+    ],
+  },
+  {
+    q: "Question 10",
+    a: [
+      { option: "A:", isCorrect: false },
+      { option: "B:", isCorrect: false },
+      { option: "C:", isCorrect: false },
+      { option: "D:", isCorrect: true },
+    ],
   },
 ];
 
@@ -53,9 +131,7 @@ $(document).ready(() => {
 
   startBtn.click(startQuiz);
 
-  answerListEl.on("click", ".btn", (e) => {
-    console.log(e.target);
-  });
+  answerListEl.on("click", ".btn", checkAnswer);
 
   submitInitialsBtn.click(() => {
     saveScore();
@@ -70,7 +146,7 @@ $(document).ready(() => {
   // Game Functions
   function quizInit() {
     // Initialize quiz variables to starting values
-    timeRemaining = 10;
+    timeRemaining = 90;
     questionIndex = 0;
     score = 0;
   }
@@ -88,6 +164,23 @@ $(document).ready(() => {
     hideQuizScreen();
     pointTotalEl.text(score);
     showScoreInputScreen();
+  }
+
+  function checkAnswer(e) {
+    if(e.target.dataset.answer === "true") {
+      score += 10;      
+    }else {
+      timeRemaining -= 10;
+    }
+
+    if(questionIndex < questions.length - 1) {
+      questionIndex++;
+      answerListEl.html("");
+      displayQuestion();
+    }else {
+      endQuiz();
+    }
+
   }
 
   function startTimer() {
@@ -140,7 +233,7 @@ $(document).ready(() => {
     questionEl.text(questions[questionIndex].q);
     questions[questionIndex].a.forEach((answer) => {
       answerListEl.append(
-        `<li><button class="btn btn-danger w-100">${answer}</button></li>`
+        `<li><button class="btn btn-danger w-100" data-answer="${answer.isCorrect}">${answer.option}</button></li>`
       );
     });
   }
@@ -148,7 +241,7 @@ $(document).ready(() => {
   function displayScores() {
     scoresListEl.html("");
     initialsListEl.html("");
-    
+
     scores = loadScores();
 
     if (scores.length != 0) {
