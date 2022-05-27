@@ -2,14 +2,16 @@ let questions = [
   {
     q: "Question 1",
     a: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-  }, {
+  },
+  {
     q: "Question 2",
     a: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-  }, {
+  },
+  {
     q: "Question 3",
     a: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
   },
-]
+];
 
 // Wait for DOM to render, then run JavaScript
 $(document).ready(() => {
@@ -26,18 +28,19 @@ $(document).ready(() => {
   let homeScreen = $("#home-screen");
   let quizScreen = $("#quiz-screen");
   let scoreInputScreen = $("#score-input-screen");
-  let scoreboardScreen = $("#scoreboard-screen");  
+  let scoreboardScreen = $("#scoreboard-screen");
   let questionEl = $("#question");
   let answerListEl = $("#answer-list");
   let scoreEl = $("#score");
   let timerEl = $("#timer");
   let pointTotalEl = $("#point-total");
   let scoresListEl = $("#scores-list");
-  
+  let initialsListEl = $("#initials-list");
+
   // Interactive Elements
   let startBtn = $("#start-btn");
   let scoreboardBtn = $("#scoreboard-btn");
-  let submitInitialsBtn = $("#submit-initials-btn")
+  let submitInitialsBtn = $("#submit-initials-btn");
   let initialsInputEl = $("#initials-input");
   let clearScoresBtn = $("#clear-scores-btn");
   let returnBtn = $("#return-btn");
@@ -59,7 +62,6 @@ $(document).ready(() => {
   returnBtn.click(returnHome);
   clearScoresBtn.click(clearScores);
 
-
   // Game Functions
   function quizInit() {
     // Initialize quiz variables to starting values
@@ -70,13 +72,13 @@ $(document).ready(() => {
 
   function startQuiz() {
     quizInit();
-    startTimer();  
-    hideActionArea(); 
+    startTimer();
+    hideActionArea();
     hideHomeScreen();
     showQuizScreen();
-    displayQuestion();    
+    displayQuestion();
   }
-  
+
   function endQuiz() {
     hideQuizScreen();
     pointTotalEl.text(score);
@@ -84,31 +86,31 @@ $(document).ready(() => {
   }
 
   function startTimer() {
-    interval = setInterval(()=> {
-      if(timeRemaining > 0) {
+    interval = setInterval(() => {
+      if (timeRemaining > 0) {
         timerEl.text(timeRemaining);
         scoreEl.text(score);
-      }else {
-        clearInterval(interval)
+      } else {
+        clearInterval(interval);
         endQuiz();
       }
       timeRemaining--;
-    }, 1000)
+    }, 1000);
   }
 
   // Local Storage Functions
   function saveScore() {
-    // Get user intials from DOM input element and 
+    // Get user intials from DOM input element and
     // create a new user object
     let user = {
-      intials: initialsInputEl.val(),
-      score: score
+      initials: initialsInputEl.val(),
+      score: score,
     };
 
     // Push user object to scores array
     scores.push(user);
 
-     // Save scores array to local storage
+    // Save scores array to local storage
     localStorage.setItem("scores", JSON.stringify(scores));
   }
 
@@ -121,7 +123,7 @@ $(document).ready(() => {
     }
   }
 
-  function clearScores(){
+  function clearScores() {
     // Clear scores from local storage
     localStorage.removeItem("scores");
     scoresListEl.html("");
@@ -131,17 +133,25 @@ $(document).ready(() => {
   // UI Functions
   function displayQuestion() {
     questionEl.text(questions[questionIndex].q);
-    questions[questionIndex].a.forEach(answer => {
-      answerListEl.append(`<li><button class="btn btn-danger w-100">${answer}</button></li>`);
+    questions[questionIndex].a.forEach((answer) => {
+      answerListEl.append(
+        `<li><button class="btn btn-danger w-100">${answer}</button></li>`
+      );
     });
   }
 
   function displayScores() {
-    scores = loadScores();
     scoresListEl.html("");
-    scores.forEach(item => {
-      scoresListEl.append(`<li>${item.intials} .......... ${item.score}</li>`);
-    });
+    initialsListEl.html("");
+    
+    scores = loadScores();
+
+    if (scores.length != 0) {
+      scores.forEach((item) => {
+        initialsListEl.append(`<li>${item.initials}</li>`);
+        scoresListEl.append(`<li>${item.score}</li>`);
+      });
+    }
   }
 
   function returnHome() {
@@ -150,44 +160,44 @@ $(document).ready(() => {
     showHomeScreen();
   }
 
-  function showActionArea(){
+  function showActionArea() {
     actionsArea.removeClass("hide");
   }
 
-  function hideActionArea(){
+  function hideActionArea() {
     actionsArea.addClass("hide");
   }
 
-  function showHomeScreen(){
+  function showHomeScreen() {
     homeScreen.removeClass("hide");
   }
 
-  function hideHomeScreen(){
+  function hideHomeScreen() {
     homeScreen.addClass("hide");
   }
 
-  function showQuizScreen(){
+  function showQuizScreen() {
     quizScreen.removeClass("hide");
   }
 
-  function hideQuizScreen(){
+  function hideQuizScreen() {
     quizScreen.addClass("hide");
   }
 
-  function showScoreInputScreen(){
+  function showScoreInputScreen() {
     scoreInputScreen.removeClass("hide");
   }
 
-  function hideScoreInputScreen(){
+  function hideScoreInputScreen() {
     scoreInputScreen.addClass("hide");
   }
 
-  function showScoreboardScreen(){
+  function showScoreboardScreen() {
     scoreboardScreen.removeClass("hide");
     displayScores();
   }
 
-  function hideScoreboardScreen(){
+  function hideScoreboardScreen() {
     scoreboardScreen.addClass("hide");
   }
 });

@@ -3,13 +3,14 @@
 }
 
 #answer-list,
+#initials-list,
 #scores-list {
   list-style-type: none;
 }
 
-#scores-list {
-  border: 1px solid black;
+#scores-list, #initials-list {
   padding: 1em 2em;  
+  text-transform: uppercase;
 }
 
 

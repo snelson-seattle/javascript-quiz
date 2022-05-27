@@ -73,7 +73,11 @@
       <section id="scoreboard-screen" class="p-5 mb-4 bg-light rounded-3 hide">
         <div class="container-fluid py-5 d-flex flex-column justify-content-center align-items-center">
           <h1>SCORES</h1>
-          <ul id="scores-list" class="w-50"></ul>
+          <div class="d-flex">
+            <ul id="initials-list" class="w-50"></ul>
+            <ul id="scores-list" class="w-50"></ul>           
+          </div>
+          
           <div id="scoreboard-actions" class="d-flex align-items-center">
             <button class="btn btn-danger mx-2" id="return-btn">Return to Start</button>
             <button class="btn btn-dark" id="clear-scores-btn">Clear Scores</button>
