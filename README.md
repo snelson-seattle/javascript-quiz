@@ -48,7 +48,7 @@ THEN I can save my initials and my score
 ```
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot.png)
 
 ### Links
 
@@ -62,25 +62,27 @@ THEN I can save my initials and my score
 - HTML5
 - CSS3
 - JavaScript
-- Mobile-first workflow
 - [jQuery](https://jquery.com/) - JS library
 - [Bootstrap](https://getbootstrap.com/) - For styles
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### What I learned
+I learned a lot about event delegation and event bubbling. I was able to use delegation to handle the answer button events.
+It is very easy to delegate event handling with jQuery as follows:
 
 ```js
-
+  answerListEl.on("click", ".btn", checkAnswer);
 ```
 
 ### Continued development
+In the future I would like to make the design more responsive, and have the questions pulled at random from a database of questions and check the answers on the server side.
 
 ### Useful resources
+- [MDN](https://developer.mozilla.org/en-US/) 
+- [jQuery Documentation](https://api.jquery.com/)
 
 ## Author
 
-- Website - [scottenelson.com](https://www.scottenelson.com)
+- Website - [scottenelson.dev](https://www.scottenelson.dev)
 - GitHub - [snelson-seattle](https://github.com/snelson-seattle)
 - LinkedIn - [Scott E. Nelson](https://www.linkedin.com/in/scottenelson)
 
